@@ -41,7 +41,6 @@ export class MyOrderedMessageProcessServiceStack extends cdk.Stack {
     const getIntegration = new apigateway.LambdaIntegration(publishEventLambda);
     apiResource.addMethod("POST", getIntegration);
 
-    const processDuration = Duration.seconds(10);
     // create SQS FIFO queue
     const processMessageQueue = new sqs.Queue(this, 'ProcessMessage', {
       queueName: 'processMessage.fifo',
